@@ -1,6 +1,7 @@
 const MainContent = function (props) {
     let movieObject = {};
     let bookObject = {};
+    let castObject = {};
     console.log(props);
     console.log(props);
 
@@ -19,8 +20,9 @@ const MainContent = function (props) {
             title: props.movieInfo.results[0].original_title,
             vote: (props.movieInfo.results[0].vote_average / 2).toFixed(2),
             release_date: props.movieInfo.results[0].release_date,
-
+            
         }
+
 
         bookObject = {
             description: props.bookInfo.volumeInfo.description,
@@ -29,6 +31,13 @@ const MainContent = function (props) {
             publish_date: props.bookInfo.volumeInfo.publishedDate,
             title: props.bookInfo.volumeInfo.title,
         }
+
+        castObject = {
+            cast1: props.castData.cast[0].name,
+            cast2: props.castData.cast[1].name,
+            cast3: props.castData.cast[2].name
+        }
+
     } catch {
     }
 
@@ -54,7 +63,7 @@ const MainContent = function (props) {
                     <div className="description">
                         <h2 className="header">{bookObject.title}</h2>
                         <p>{bookObject.description}</p>
-                        <p>{bookObject.author}</p>
+                        <p>Author: {bookObject.author}</p>
                         <p>{bookObject.publish_date}</p>
                     </div>
                 </div>
@@ -77,6 +86,7 @@ const MainContent = function (props) {
                         <h2 className="header">{movieObject.title}</h2>
                         <p>{movieObject.author}</p>
                         <p>{movieObject.description}</p>
+                        <p>Starring: {castObject.cast1}, {castObject.cast2}, and {castObject.cast3}</p>
                         <p>{movieObject.release_date}</p>
                     </div>
                 </div>
@@ -89,8 +99,11 @@ const MainContent = function (props) {
 
             {/* FireBase Stuff Container */}
             <div className="three"><p className="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex, earum sapiente reiciendis consequatur veritatis, natus nostrum totam consequuntur neque accusantium labore sint delectus deserunt.</p>
+                <footer>
+                    <p>Made by <a className="juno" href=".com">Andrew</a> <a className="juno" href=".com">Adeel</a> and <a className="juno" href=".com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
+                </footer>
             </div>
-
+            
         </section>
     )
 }

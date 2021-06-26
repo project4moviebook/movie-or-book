@@ -9,6 +9,13 @@ import MainContent from './MainContent';
 
 function App() {
 
+  // search function 
+  const search = (searchQuery)=> {
+    searchQuery.preventDefault();
+    setUserSearch(searchQuery.target[0].value)
+    // searchQuery.target[0].value ? setUserSearch(searchQuery.target[0].value) : setUserSearch("Harry Potter");
+  }
+
   const scrollDiv = createRef();
 
   // function used to scroll down to main content 
@@ -19,10 +26,11 @@ function App() {
 
 
 
-  const [userSearch, setUserSearch] = useState('The hunger games');
+  const [userSearch, setUserSearch] = useState('The Hunger Games');
   const [bookData, setBookData] = useState([]);
   const [movieData, setMovieData] = useState([]);
   const [imgUrl, setImgUrl] = useState('');
+  const [castData, setCastData] = useState([]);
 
   //for testing
   const test = () => {
@@ -47,13 +55,13 @@ function App() {
 
       fetch(`https://api.themoviedb.org/3/movie/${jsonData.results[0].id}/credits?api_key=3951aaaa350c1d4bbe3275a095820e70`).then((data) => {
         return data.json()
-      }).then((jsonData) => {
-        console.log(jsonData);
-
+      }).then((jsonCastData) => {
+        setCastData(jsonCastData);
       })
       // -----------------------
 
       console.log(jsonData);
+      
       setMovieData(jsonData); //passing along the movie data to be used later
       //jsonData return contains a title that is passed on to this fetch call
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${jsonData.results[0].title}&key=AIzaSyBiVci_ifQql4mBeaUVSW6rU6KSmZwukS8`)
@@ -76,7 +84,7 @@ function App() {
 
     });
 
-  }, []);
+  }, [userSearch]);
 
   // test();
 
@@ -87,25 +95,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header search={search}/>
       {/* <button onClick={>click me!</button> */}
       <main>
         {/* We pass the function used to scroll to main  */}
         <Instructions scrollButton={scrollSmoothHandler} />
         {/* We pass the reference to the div we are trying to scroll too */}
-        <MainContent bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} />
+        <MainContent bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} />
       </main>
 
-      {/*  */}
-
-
-      <footer>
-        <p>Made by <a className="juno" href=".com">Andrew</a> <a className="juno" href=".com">Adeel</a> and <a className="juno" href=".com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
-
-      </footer>
-
-
-    </div>
+  </div>
   );
 }
 
