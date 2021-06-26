@@ -43,20 +43,20 @@ const MainContent = function (props) {
 
             {/* Book Stuff Container */}
             <div className="one">
-                <div >
-                    <h2>{bookObject.title}</h2>
-                    <div className="imageContainer">
+                <div className="mediaContainer">
+                    <div className="imageContainer poster">
                         <img src={props.imgUrl} alt="" />
                         <div className="voteIcon">
                             <p>{bookObject.vote}/5</p>
                         </div>
                     </div>
-                </div>
-                <div className="objectDescriptions">
-
-                    <p>{bookObject.author}</p>
-                    <p>{bookObject.description}</p>
-                    <p>{bookObject.publish_date}</p>
+                
+                    <div className="description">
+                        <h2 className="header">{bookObject.title}</h2>
+                        <p>{bookObject.description}</p>
+                        <p>{bookObject.author}</p>
+                        <p>{bookObject.publish_date}</p>
+                    </div>
                 </div>
 
             </div>
@@ -64,22 +64,21 @@ const MainContent = function (props) {
 
             {/* Movie Stuff Container */}
             <div className="two">
-                <div>
-                    <h2>{movieObject.title}</h2>
-                    <div className="imageContainer">
+
+                <div className="mediaContainer">
+                    <div className="imageContainer poster">
                         <img src={movieObject.path} alt="" />
                         <div className="voteIcon">
-                            <p >{movieObject.vote}/5</p>
-
+                            <p>{movieObject.vote}/5</p>
                         </div>
                     </div>
-                </div>
 
-                <div className="objectDescriptions">
-
-                    <p>{movieObject.author}</p>
-                    <p>{movieObject.description}</p>
-                    <p>{movieObject.release_date}</p>
+                    <div className="description">
+                        <h2 className="header">{movieObject.title}</h2>
+                        <p>{movieObject.author}</p>
+                        <p>{movieObject.description}</p>
+                        <p>{movieObject.release_date}</p>
+                    </div>
                 </div>
 
 

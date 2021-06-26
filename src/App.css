@@ -297,7 +297,7 @@ img {
 
 
 header {
-  padding: 25px;
+  padding: 0 25px;
   background-color: #5da9c2;
   display: flex;
   justify-content: space-between;
@@ -307,7 +307,7 @@ header {
   right: 0;
   left: 0;
   z-index: 10;
-  height: 175px;
+  height: 100px;
 }
 
 header h1 {
@@ -351,9 +351,8 @@ input[type="submit"] {
 
 .instructionsContainer {
   /* background-color: rgba(0, 0, 0, 0.8); */
-  width: 100vw;
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,27 +379,64 @@ input[type="submit"] {
 
 .instructionsButton {
   padding: 10px 25px;
-
+  display: inline-block;
+  /* margin-left: 5px; */
+  border: none;
+  margin: 20px 0 10px;
+  text-decoration: none;
+  background: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-align: center;
+  transition: 250ms ease-in-out;
+  transform: 150ms ease;
+  border-radius: 5px;
+  background: #008ac9;
 }
 
 .mainContainer {
-
-  height: calc(100vh - 175px);
+  
+  height: calc(100vh - 100px);
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1.7fr 250px;
+  grid-template-rows: 1fr 100px;
   gap: 0px 0px;
   grid-template-areas:
     ". ."
     ". .";
 }
 
+.mediaContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "poster description"
+}
+
+.header {
+  grid-area: header;
+}
+
+.poster {
+  grid-area: poster;
+}
+
+.description {
+  grid-area: description;
+}
+
+.cast {
+  grid-area: cast;
+}
+
 .one,
 .two {
-
   text-align: center;
-  /* height: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -409,29 +445,24 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   padding-bottom: 50px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
-.one h2,
-.two h2 {
+h2 {
   font-size: 2em;
   font-family: 'Maitree', serif;
 }
-
-
 
 .one img,
 .two img {
   width: auto;
   height: 100%;
-
-
 }
 
 .imageContainer {
   position: relative;
-  width: 400px;
-  height: 450px;
+  width: 300px;
+  height: 350px;
   margin: auto;
 }
 
@@ -444,7 +475,6 @@ input[type="submit"] {
   border-radius: 50%;
   background-color: red;
   text-transform: uppercase;
-  /* text-align: left; */
   font-size: 2rem;
   font-weight: 700;
   display: flex;
@@ -459,12 +489,10 @@ input[type="submit"] {
   width: 80%;
   text-align: left;
   height: 200px;
-
 }
 
 .three {
   background-color: green;
-  /* height: 150px; */
   grid-column-start: 1;
   grid-column-end: 3;
 
@@ -477,12 +505,12 @@ input[type="submit"] {
 footer {
   text-align: center;
   background-color: black;
-
-  padding: 25px;
+  padding: 10px;
 }
 
 footer p {
   color: white;
+  margin: 0;
 }
 
 
