@@ -401,7 +401,7 @@ input[type="submit"] {
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 100px;
+  grid-template-rows: 2fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
     ". ."
@@ -418,39 +418,26 @@ input[type="submit"] {
     "poster description"
 }
 
-.header {
-  grid-area: header;
-}
-
 .poster {
   grid-area: poster;
 }
 
 .description {
   grid-area: description;
+  /* padding: 0 20px; */
+  text-align: left;
 }
 
-.cast {
-  grid-area: cast;
-}
 
 .one,
 .two {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 50px;
-  /* overflow-y: auto; */
+  padding: 40px 40px 0;
 }
 
 h2 {
   font-size: 2em;
   font-family: 'Maitree', serif;
+  margin-top: 0;
 }
 
 .one img,
@@ -463,7 +450,6 @@ h2 {
   position: relative;
   width: 300px;
   height: 350px;
-  margin: auto;
 }
 
 .voteIcon {
@@ -495,7 +481,8 @@ h2 {
   background-color: green;
   grid-column-start: 1;
   grid-column-end: 3;
-
+  min-height: 150px;
+  position: relative;
 }
 
 .one {
@@ -506,6 +493,10 @@ footer {
   text-align: center;
   background-color: black;
   padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 footer p {
