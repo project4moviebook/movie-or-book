@@ -297,7 +297,7 @@ img {
 
 
 header {
-  padding: 25px;
+  padding: 0 25px;
   background-color: #5da9c2;
   display: flex;
   justify-content: space-between;
@@ -307,7 +307,7 @@ header {
   right: 0;
   left: 0;
   z-index: 10;
-  height: 175px;
+  height: 100px;
 }
 
 header h1 {
@@ -351,9 +351,8 @@ input[type="submit"] {
 
 .instructionsContainer {
   /* background-color: rgba(0, 0, 0, 0.8); */
-  width: 100vw;
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -385,15 +384,15 @@ input[type="submit"] {
 
 .mainContainer {
 
-  height: calc(100vh - 175px);
+  height: calc(100vh - 100px);
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1.7fr 250px;
+  grid-template-rows: 1fr 100px;
   gap: 0px 0px;
-  grid-template-areas:
+  /* grid-template-areas:
     ". ."
-    ". .";
+    ". ."; */
 }
 
 .one,
@@ -409,7 +408,7 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   padding-bottom: 50px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .one h2,
@@ -430,8 +429,8 @@ input[type="submit"] {
 
 .imageContainer {
   position: relative;
-  width: 400px;
-  height: 450px;
+  /* width: 200px; */
+  height: 250px;
   margin: auto;
 }
 
@@ -458,7 +457,7 @@ input[type="submit"] {
   margin-top: 50px;
   width: 80%;
   text-align: left;
-  height: 200px;
+  /* height: 200px; */
 
 }
 
@@ -477,12 +476,12 @@ input[type="submit"] {
 footer {
   text-align: center;
   background-color: black;
-
-  padding: 25px;
+  padding: 10px;
 }
 
 footer p {
   color: white;
+  margin: 0;
 }
 
 
