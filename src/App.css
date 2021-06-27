@@ -356,6 +356,22 @@ input[type="submit"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-image: url("https://www.indiewire.com/wp-content/uploads/2021/05/AdobeStock_349950986.jpeg?w=780"); */
+  /* backdrop-filter: blur(500px); */
+  /* background-size: cover; */
+  /* filter: blur(8px); */
+  /* -webkit-filter: blur(8px); */
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://www.indiewire.com/wp-content/uploads/2021/05/AdobeStock_349950986.jpeg?w=780");
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+  position: absolute;
+  z-index: -20;
+    background-size: cover;
 }
 
 .instructionsInnerContainer {
@@ -363,7 +379,6 @@ input[type="submit"] {
   background-color: white;
   padding: 50px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
   /* position: absolute; */
   /* top: 0;
   right: 0;
@@ -397,14 +412,13 @@ input[type="submit"] {
 
 .mainContainer {
   
-  height: calc(100vh - 100px);
+  /* height: calc(100vh - 100px); */
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr;
   gap: 0px 0px;
   grid-template-areas:
-    ". ."
     ". .";
 }
 
@@ -432,6 +446,7 @@ input[type="submit"] {
 .one,
 .two {
   padding: 40px 40px 0;
+  margin-bottom: 40px;
 }
 
 h2 {
@@ -450,6 +465,8 @@ h2 {
   position: relative;
   width: 300px;
   height: 350px;
+  display: flex;
+  justify-content: center;
 }
 
 .voteIcon {
@@ -493,10 +510,10 @@ footer {
   text-align: center;
   background-color: black;
   padding: 10px;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  /* bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
 }
 
 footer p {
@@ -504,8 +521,101 @@ footer p {
   margin: 0;
 }
 
+.blankDiv {
+  height: 100px
+}
+
+.noBook {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+.failed {
+  text-align: center;
+  margin: 50px 0;
+  min-height: calc(100vh - 240px);
+}
+
+.failed img {
+  width: 25%;
+  height: auto;
+  max-width: 330px;
+  min-width: 125px;
+}
+
+.winnerIcon {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: -50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.winnerIcon img {
+  width: 100%;
+  height: auto;
+  background: none;
+}
+
 
 
 /* Add the blur effect */
-/* filter: blur(8px); */
-/* -webkit-filter: blur(8px); */
+/* filter: blur(8px);
+-webkit-filter: blur(8px); */
+
+@media(max-width: 1050px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    height: unset;
+  }
+
+  .blankDiv {
+    height: 155px
+  }
+
+  .one {
+    border-right: none;
+  }
+
+.failed {
+  text-align: center;
+  margin: 50px 0;
+  min-height: calc(100vh - 300px);
+}
+
+}
+
+@media(max-width: 600px) {
+  .mediaContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .poster {
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
+
+  .voteIcon {
+    right: 0px;
+    top: -30px;
+  }
+/* 
+  .voteIcon {
+    right: 0px;
+    bottom: -25px;
+  } */
+}
