@@ -21,7 +21,7 @@ function App() {
   // function used to scroll down to main content 
 
   const scrollSmoothHandler = () => {
-    scrollDiv.current.scrollIntoView({ behavior: "smooth", block: "end" }); //function behaviour is to go smoothly and it ends at the top of the block 
+    scrollDiv.current.scrollIntoView({ behavior: "smooth", block: "start" }); //function behaviour is to go smoothly and it ends at the top of the block 
   };
 
 
@@ -31,6 +31,11 @@ function App() {
   const [movieData, setMovieData] = useState([]);
   const [imgUrl, setImgUrl] = useState('');
   const [castData, setCastData] = useState([]);
+  const [defaultImage, setDefaultImage] = useState("");
+  const [bookNotFound, setBookNotFound] = useState(false);  const [failedSearch, setFailedSearch] = useState(false);
+
+
+
 
   //for testing
   const test = () => {
@@ -53,6 +58,8 @@ function App() {
 
       // ---------------------
 
+      try {
+
       fetch(`https://api.themoviedb.org/3/movie/${jsonData.results[0].id}/credits?api_key=3951aaaa350c1d4bbe3275a095820e70`).then((data) => {
         return data.json()
       }).then((jsonCastData) => {
@@ -74,13 +81,26 @@ function App() {
             .then(response => response.json())
             .then(result => {
               // console.log('after');
-              // console.log(result);
+              console.log(result);
+              try {
+                setDefaultImage(result.volumeInfo.imageLinks.thumbnail)
+              } catch {
+                setBookNotFound(true)
+              }
               setBookData(result); //passing along the book data to be used later
-              setImgUrl(`https://covers.openlibrary.org/b/ISBN/${result.volumeInfo.industryIdentifiers[0].identifier}-L.jpg`);
+              try {
+                setImgUrl(`https://covers.openlibrary.org/b/ISBN/${result.volumeInfo.industryIdentifiers[0].identifier}-L.jpg`);
+                console.log(imgUrl)
+              } catch {
+                console.log("no img")
+              }
 
             })
-
-        })
+            setBookNotFound(false)
+            setFailedSearch(false)
+        }) } catch {
+          setFailedSearch(true)
+        }
 
     });
 
@@ -99,10 +119,14 @@ function App() {
       {/* <button onClick={>click me!</button> */}
       <main>
         {/* We pass the function used to scroll to main  */}
-        <Instructions scrollButton={scrollSmoothHandler} />
+        {failedSearch ? null : <Instructions scrollButton={scrollSmoothHandler} />}
         {/* We pass the reference to the div we are trying to scroll too */}
-        <MainContent bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} />
+        <div ref={scrollDiv} className="blankDiv"></div>
+        {failedSearch ? <div ref={scrollDiv} className="failed"><p>Search Failed. Please try again.</p><img src="https://www.vippng.com/png/detail/209-2093020_png-file-search-error-icon.png"/></div> : <MainContent bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} defaultImage={defaultImage} bookNotFound={bookNotFound} />}
       </main>
+      <footer>
+        <p>Made by <a className="juno" href=".com">Andrew</a> <a className="juno" href=".com">Adeel</a> and <a className="juno" href=".com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
+      </footer>
 
   </div>
   );

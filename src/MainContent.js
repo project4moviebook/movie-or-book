@@ -5,14 +5,6 @@ const MainContent = function (props) {
     console.log(props);
     console.log(props);
 
-
-
-
-
-
-
-
-
     try {
         movieObject = {
             path: `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${props.movieInfo.results[0].poster_path}`,
@@ -30,6 +22,7 @@ const MainContent = function (props) {
             vote: props.bookInfo.volumeInfo.averageRating,
             publish_date: props.bookInfo.volumeInfo.publishedDate,
             title: props.bookInfo.volumeInfo.title,
+            default: props.defaultImage
         }
 
         castObject = {
@@ -41,6 +34,31 @@ const MainContent = function (props) {
     } catch {
     }
 
+    function editText() {
+        try {
+            const desc = document.querySelector("#bookText");
+            desc.innerHTML=bookObject.description;
+        } catch {
+            
+        }
+    }
+
+    function fake(para) {
+
+        if (para.target.width == 350 && para.target.height == 350) {
+            document.querySelector("#bookImage").src=bookObject.default
+        }
+        // console.log(para)
+        // console.log(para.target.width)
+    }
+
+    let winner;
+
+    if (bookObject.vote > movieObject.vote) {
+        winner = true;
+    } else {
+        winner = false;
+    }
 
     // const movieInfo = props.movieInfo;
     // console.log(props.movieInfo.results[0].adult);
@@ -48,24 +66,34 @@ const MainContent = function (props) {
     return (
         // this is the div we are trying to scroll too 
 
-        <section ref={props.scrollTo} className="mainContainer">
+        <section className="mainContainer">
 
             {/* Book Stuff Container */}
             <div className="one">
+
                 <div className="mediaContainer">
-                    <div className="imageContainer poster">
-                        <img src={props.imgUrl} alt="" />
+
+                { props.bookNotFound ?
+                        <div className="noBook">
+                            <p>Book Not Found. Please try another search.</p>
+                        </div>: <div className="imageContainer poster">
+                        <img id="bookImage" onLoad={(e)=>{fake(e)}} src={props.imgUrl} alt="" />
                         <div className="voteIcon">
                             <p>{bookObject.vote}/5</p>
                         </div>
-                    </div>
-                
-                    <div className="description">
+                        {winner ? <div className="winnerIcon">
+                        <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png"/>
+                        </div> : null}
+                    </div>}
+
+                    {props.bookNotFound ? "" : <div className="description">
                         <h2 className="header">{bookObject.title}</h2>
-                        <p>{bookObject.description}</p>
+                        <p id="bookText" onLoad={editText()}>{bookObject.description}</p>
                         <p>Author: {bookObject.author}</p>
                         <p>{bookObject.publish_date}</p>
-                    </div>
+                    </div>}
+                    
+                
                 </div>
 
             </div>
@@ -80,6 +108,9 @@ const MainContent = function (props) {
                         <div className="voteIcon">
                             <p>{movieObject.vote}/5</p>
                         </div>
+                        {!winner ? <div className="winnerIcon">
+                        <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png"/>
+                        </div> : null}
                     </div>
 
                     <div className="description">
@@ -97,12 +128,8 @@ const MainContent = function (props) {
 
 
 
-            {/* FireBase Stuff Container */}
-            <div className="three"><p className="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex, earum sapiente reiciendis consequatur veritatis, natus nostrum totam consequuntur neque accusantium labore sint delectus deserunt.</p>
-                <footer>
-                    <p>Made by <a className="juno" href=".com">Andrew</a> <a className="juno" href=".com">Adeel</a> and <a className="juno" href=".com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
-                </footer>
-            </div>
+            {/* <div className="three"><p className="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex, earum sapiente reiciendis consequatur veritatis, natus nostrum totam consequuntur neque accusantium labore sint delectus deserunt.</p>
+            </div> */}
             
         </section>
     )
