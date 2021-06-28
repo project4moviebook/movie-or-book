@@ -1,4 +1,9 @@
+import firebase from "./firebase";
+import { useEffect, useState } from "react";
+
 const MainContent = function (props) {
+    const dbRef = firebase.database().ref();
+    const [filteredList, setFilteredList] = useState([]);
     let movieObject = {};
     let bookObject = {};
     let castObject = {};
@@ -12,7 +17,7 @@ const MainContent = function (props) {
             title: props.movieInfo.results[0].original_title,
             vote: (props.movieInfo.results[0].vote_average / 2).toFixed(2),
             release_date: props.movieInfo.results[0].release_date,
-            
+
         }
 
 
@@ -37,16 +42,16 @@ const MainContent = function (props) {
     function editText() {
         try {
             const desc = document.querySelector("#bookText");
-            desc.innerHTML=bookObject.description;
+            desc.innerHTML = bookObject.description;
         } catch {
-            
+
         }
     }
 
-    function fake(para) {
+    function checkIfBlank(para) {
 
-        if (para.target.width == 350 && para.target.height == 350) {
-            document.querySelector("#bookImage").src=bookObject.default
+        if (para.target.width === 350 && para.target.height === 350) {
+            document.querySelector("#bookImage").src = bookObject.default
         }
         // console.log(para)
         // console.log(para.target.width)
@@ -59,6 +64,41 @@ const MainContent = function (props) {
     } else {
         winner = false;
     }
+
+
+    // useEffect(() => {
+    // dbRef.on('value', (response) => {
+    // const dataArray = [];
+    // const filteredArray = [];
+
+    // dataArray.push(response.val());
+    // dataArray.forEach((value, index) => {
+    //     // document.querySelector('.searchItems').innerHTML = "";
+
+    //     for (let search in value) {
+    //         filteredArray.push(search);
+    //         // document.querySelector('.searchItems').innerHTML += `<button class="searchButton"> ${value[search]} </button
+    //     }
+    // })
+    // setFilteredList(filteredArray);
+    // if (filteredArray.includes(<img className={movieObject.title} src={movieObject.path} alt={`The poster for ${movieObject.title}`} />)) {
+    //     console.log("this already exists");
+    // }
+
+
+    firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+
+
+    // })
+    // }, [])
+
+
+
+
+
+
+
+
 
     // const movieInfo = props.movieInfo;
     // console.log(props.movieInfo.results[0].adult);
@@ -73,18 +113,18 @@ const MainContent = function (props) {
 
                 <div className="mediaContainer">
 
-                { props.bookNotFound ?
+                    {props.bookNotFound ?
                         <div className="noBook">
                             <p>Book Not Found. Please try another search.</p>
-                        </div>: <div className="imageContainer poster">
-                        <img id="bookImage" onLoad={(e)=>{fake(e)}} src={props.imgUrl} alt="" />
-                        <div className="voteIcon">
-                            <p>{bookObject.vote}/5</p>
-                        </div>
-                        {winner ? <div className="winnerIcon">
-                        <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png"/>
-                        </div> : null}
-                    </div>}
+                        </div> : <div className="imageContainer poster">
+                            <img id="bookImage" onLoad={(e) => { checkIfBlank(e) }} src={props.imgUrl} alt="" />
+                            <div className="voteIcon">
+                                <p>{bookObject.vote}/5</p>
+                            </div>
+                            {winner ? <div className="winnerIcon">
+                                <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" />
+                            </div> : null}
+                        </div>}
 
                     {props.bookNotFound ? "" : <div className="description">
                         <h2 className="header">{bookObject.title}</h2>
@@ -92,8 +132,8 @@ const MainContent = function (props) {
                         <p>Author: {bookObject.author}</p>
                         <p>{bookObject.publish_date}</p>
                     </div>}
-                    
-                
+
+
                 </div>
 
             </div>
@@ -104,12 +144,12 @@ const MainContent = function (props) {
 
                 <div className="mediaContainer">
                     <div className="imageContainer poster">
-                        <img src={movieObject.path} alt="" />
+                        <img className={movieObject.title} src={movieObject.path} alt={`The poster for ${movieObject.title}`} />
                         <div className="voteIcon">
                             <p>{movieObject.vote}/5</p>
                         </div>
                         {!winner ? <div className="winnerIcon">
-                        <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png"/>
+                            <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" />
                         </div> : null}
                     </div>
 
@@ -130,7 +170,7 @@ const MainContent = function (props) {
 
             {/* <div className="three"><p className="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex, earum sapiente reiciendis consequatur veritatis, natus nostrum totam consequuntur neque accusantium labore sint delectus deserunt.</p>
             </div> */}
-            
+
         </section>
     )
 }
