@@ -396,7 +396,6 @@ input[type="submit"] {
 }
 
 .mainContainer {
-  
   height: calc(100vh - 100px);
   display: grid;
   grid-auto-columns: 1fr;
@@ -424,7 +423,6 @@ input[type="submit"] {
 
 .description {
   grid-area: description;
-  /* padding: 0 20px; */
   text-align: left;
 }
 

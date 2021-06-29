@@ -10,7 +10,7 @@ import MainContent from './MainContent';
 function App() {
 
   // search function 
-  const search = (searchQuery)=> {
+  const search = (searchQuery) => {
     searchQuery.preventDefault();
     setUserSearch(searchQuery.target[0].value)
     // searchQuery.target[0].value ? setUserSearch(searchQuery.target[0].value) : setUserSearch("Harry Potter");
