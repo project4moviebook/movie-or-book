@@ -12,6 +12,7 @@ function SearchHistory(props) {
             newArray.push(response.val());
             setSearchList(newArray);
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const closeHistory = () => {
@@ -23,8 +24,6 @@ function SearchHistory(props) {
     }
 
     function populateList() {
-        console.log("populate list ran");
-        console.log(searchList)
 
         // let count = 0;
         // console.log(searchList[0]);

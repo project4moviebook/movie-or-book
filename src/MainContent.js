@@ -1,14 +1,12 @@
 import firebase from "./firebase";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const MainContent = function (props) {
-    const dbRef = firebase.database().ref();
-    const [filteredList, setFilteredList] = useState([]);
+    // const dbRef = firebase.database().ref();
+    // const [filteredList, setFilteredList] = useState([]);
     let movieObject = {};
     let bookObject = {};
     let castObject = {};
-    console.log(props);
-    console.log(props);
 
     try {
         movieObject = {

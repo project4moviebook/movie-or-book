@@ -62,14 +62,11 @@ function App() {
         })
         // -----------------------
 
-        console.log(jsonData);
-
         setMovieData(jsonData); //passing along the movie data to be used later
         //jsonData return contains a title that is passed on to this fetch call
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${jsonData.results[0].title}&key=AIzaSyBiVci_ifQql4mBeaUVSW6rU6KSmZwukS8`)
           .then(response => response.json())
           .then(result => {
-            console.log(result);
 
             //response return contains a id that is passed on to this fetch call
             // fetch(`https://www.googleapis.com/books/v1/volumes/${result.items[0].id}?key=AIzaSyBiVci_ifQql4mBeaUVSW6rU6KSmZwukS8`)
@@ -77,27 +74,24 @@ function App() {
             //   .then(result => {
             // console.log('after');
 
-            console.log(result.items[0]);
+            
 
 
             setBookData(result.items[0]); //passing along the book data to be used later
             try {
               setImgUrl(`https://covers.openlibrary.org/b/ISBN/${result.items[0].volumeInfo.industryIdentifiers[0].identifier}-L.jpg`);
-              console.log(imgUrl)
+              
             } catch {
-              console.log("no img")
+              
             }
             try {
               setDefaultImage(result.items[0].volumeInfo.imageLinks.thumbnail)
-              console.log('I ran successfully')
+              
             } catch {
               setBookNotFound(true);
-              console.log("I failed")
+              
             }
 
-            // })
-            // setBookNotFound(false)
-            // setFailedSearch(false)
           })
         setBookNotFound(false)
         setFailedSearch(false)
@@ -106,13 +100,12 @@ function App() {
       }
 
     });
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userSearch]);
 
 
   useEffect(() => {
     window.addEventListener('click', (e) => {
-      console.log(e);
       if (e.target.parentNode.className === 'searchButton') {
         setUserSearch(e.target.className);
       } else if (e.target.className === 'searchButton') {
