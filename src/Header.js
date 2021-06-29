@@ -3,15 +3,23 @@
 
 const Header = function (props) {
 
-    return (
-        <header className="App-header">
-            <h1>Is The Book Better?</h1>
-            <form onSubmit={(e) => props.search(e)} action="">
-                <label className="sr-only" htmlFor="submit">Enter a Movie/Book</label>
-                <input type="text" name="submit" id="submit" placeholder="Enter a Movie/Book" />
-                <input type="submit" value="Submit" />
+    const displayHistory = () => {
+        document.querySelector('.searchHistoryContainer').classList.remove('hidden')
+    }
 
-            </form>
+    return (
+        <header>
+            <div className="wrapper appHeader">
+                <h1>Is The Book Better?</h1>
+                <div className="searchButtons">
+                    <form onSubmit={(e) => props.search(e)} action="">
+                        <label className="sr-only" htmlFor="submit">Enter a Movie/Book</label>
+                        <input type="text" name="submit" id="submit" placeholder="Enter a Movie/Book" />
+                        <input type="submit" value="Submit" />
+                    </form>
+                    <button onClick={displayHistory} id="historyButton"className="instructionsButton2"><i className="fas fa-list-alt"></i> Search History</button>
+                </div>
+            </div>
         </header>
     )
 }

@@ -292,33 +292,62 @@ img {
   background-repeat: no-repeat;
 }
 
-/* font-family: 'Montserrat', sans-serif; */
-/* font-family: 'Maitree', serif; */
+.wrapper {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
 
+a {
+  color: black;
+}
+
+p {
+  line-height: 1.5;
+}
 
 header {
-  padding: 0 25px;
   background-color: #5da9c2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  position: fixed;
   z-index: 10;
   height: 100px;
 }
 
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
 header h1 {
-
-  text-decoration: underline;
-  text-decoration-style: double;
-  text-decoration-thickness: 2px;
-
+  font-size: 4rem;
   font-family: 'Maitree', serif;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 4px solid #008ac9;
+}
 
+.instructionsContainer h2 {
+  text-decoration: underline;
+}
 
+.cookie {
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+  font-size: 4rem;
+  color: rgba(195, 155, 119, 0.5);
+}
+
+.searchButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 form input {
@@ -327,13 +356,28 @@ form input {
 
 input[type="text"] {
   width: 300px;
-  padding: 10px 15px;
+  padding: 15p2;
+  border-radius: 5px;
+  border: 4px solid #008ac9; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.2),
+            0 0 16px rgba(0,0,0,0.2); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.2),
+            0 0 16px rgba(0,0,0,0.2); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.2),
+            0 0 16px rgba(0,0,0,0.2); 
+    background: rgba(255,255,255,1);
+    margin: 0 0 10px 0;
 }
 
+.instructionsInnerContainer {
+  position: relative;
+}
 
-input[type="submit"] {
+input[type="submit"], .instructionsButton2 {
   display: inline-block;
-  /* margin-left: 5px; */
   border: none;
   padding: 10px 15px;
   margin: 20px 5px;
@@ -350,17 +394,10 @@ input[type="submit"] {
 }
 
 .instructionsContainer {
-  /* background-color: rgba(0, 0, 0, 0.8); */
   height: 100vh;
-  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url("https://www.indiewire.com/wp-content/uploads/2021/05/AdobeStock_349950986.jpeg?w=780"); */
-  /* backdrop-filter: blur(500px); */
-  /* background-size: cover; */
-  /* filter: blur(8px); */
-  /* -webkit-filter: blur(8px); */
 }
 
 .hero {
@@ -378,12 +415,8 @@ input[type="submit"] {
   width: 50vw;
   background-color: white;
   padding: 50px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  /* position: absolute; */
-  /* top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border: 4px solid #ace8cd;
 }
 
 .instructionsDiv {
@@ -395,7 +428,6 @@ input[type="submit"] {
 .instructionsButton {
   padding: 10px 25px;
   display: inline-block;
-  /* margin-left: 5px; */
   border: none;
   margin: 20px 0 10px;
   text-decoration: none;
@@ -411,8 +443,7 @@ input[type="submit"] {
 }
 
 .mainContainer {
-
-  /* height: calc(100vh - 100px); */
+  min-height: calc(100vh - 100px);
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
@@ -438,10 +469,8 @@ input[type="submit"] {
 
 .description {
   grid-area: description;
-  /* padding: 0 20px; */
   text-align: left;
 }
-
 
 .one,
 .two {
@@ -459,6 +488,8 @@ h2 {
 .two img {
   width: auto;
   height: 100%;
+  min-height: 350px;
+  max-width: 250px;
 }
 
 .imageContainer {
@@ -476,14 +507,15 @@ h2 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #ace8cd;
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #261870;
+  border: 2px solid #261870;
   padding: 40px;
 }
 
@@ -508,17 +540,17 @@ h2 {
 
 footer {
   text-align: center;
-  background-color: black;
+  background-color: #261870;
   padding: 10px;
-  /* position: absolute; */
-  /* bottom: 0;
-  left: 0;
-  right: 0; */
 }
 
 footer p {
-  color: white;
+  color: #fff;
   margin: 0;
+}
+
+footer a {
+  color: #fff;
 }
 
 .blankDiv {
@@ -549,7 +581,7 @@ footer p {
   width: 150px;
   height: auto;
   position: absolute;
-  top: -50px;
+  top: -70px;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 50%;
   padding: 15px;
@@ -558,11 +590,15 @@ footer p {
 .winnerIcon img {
   width: 100%;
   height: auto;
+  min-height: 0;
   background: none;
 }
 
 .searchHistoryContainer {
-  background-color: yellow;
+  background-color: #5da9c2;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23261870' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  border: 8px solid #261870;
+  border-bottom: none;
   width: 75vw;
   position: fixed;
   bottom: 0;
@@ -572,6 +608,64 @@ footer p {
   margin: 0 auto;
   max-height: 500px;
   overflow-y: auto;
+  padding: 10px;
+	-webkit-animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2021-6-29 12:50:2
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-up-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-bottom {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+}
+@keyframes scale-up-bottom {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+}
+
+.iconify {
+  font-size: 6rem;
+  position: absolute;
+  top: 40px;
+  right: -35px;
+}
+
+.searchItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchItems button {
@@ -582,7 +676,7 @@ footer p {
   background: transparent;
   height: auto;
   cursor: pointer;
-  margin: 25px;
+  /* margin: 25px; */
 }
 
 .searchItems button img {
@@ -591,21 +685,66 @@ footer p {
   /* margin: 25px; */
 }
 
+.closeButton {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  height: auto;
+  cursor: pointer;
+  margin: 10px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
 
-/* Add the blur effect */
-/* filter: blur(8px);
--webkit-filter: blur(8px); */
+}
 
-@media(max-width: 1050px) {
+.closeButton i, 
+.clearHistory i {
+  font-size: 3rem;
+  color: #261870;
+  margin: 5px;
+}
+
+.clearHistory {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  height: auto;
+  cursor: pointer;
+  margin: 10px;
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media(max-width: 1100px) {
+  header h1 {
+    font-size: 3rem;
+    /* margin-bottom: 5px; */
+  }
+
   .mainContainer {
     display: flex;
     flex-direction: column;
   }
 
   header {
+    height: auto;
+  }
+  .appHeader {
     display: flex;
     flex-direction: column;
     height: unset;
+  }
+
+  input[type="submit"], .instructionsButton2 {
+    margin-top: 0;
   }
 
   .blankDiv {
@@ -621,10 +760,42 @@ footer p {
     margin: 50px 0;
     min-height: calc(100vh - 300px);
   }
-
 }
 
-@media(max-width: 600px) {
+@media(max-width: 900px) {
+  .instructionsInnerContainer {
+    width: 85%;
+  }
+
+  .searchItems button {
+    width: 30%;
+  }
+}
+
+@media(max-width: 625px) {
+  header {
+    position: static;
+  }
+
+  .searchButtons {
+    flex-direction: column;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="text"] {
+    min-width: 100%;
+  }
+
+  input[type="submit"] {
+    margin: 10px;
+  }
+
   .mediaContainer {
     display: flex;
     flex-direction: column;
@@ -643,9 +814,33 @@ footer p {
     top: -30px;
   }
 
-  /* 
+  .searchItems button {
+    width: 40%;
+  }
+
+  .searchHistoryContainer {
+    width: 85vw;
+  }
+}
+
+@media(max-width: 450px) {
+  .imageContainer {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .voteIcon {
-    right: 0px;
-    bottom: -25px;
-  } */
+    position: static;
+    margin-top: 15px;
+  }
+
+  .instructionsInnerContainer {
+    width: 100%;
+  }
+
+  .closeButton, .clearHistory{
+    right: -15px
+  }
 }

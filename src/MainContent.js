@@ -50,7 +50,7 @@ const MainContent = function (props) {
 
     function checkIfBlank(para) {
 
-        if (para.target.width === 350 && para.target.height === 350) {
+        if (para.target.width === 250 && para.target.height === 350) {
             document.querySelector("#bookImage").src = bookObject.default
         }
         // console.log(para)
@@ -117,12 +117,12 @@ const MainContent = function (props) {
                         <div className="noBook">
                             <p>Book Not Found. Please try another search.</p>
                         </div> : <div className="imageContainer poster">
-                            <img id="bookImage" onLoad={(e) => { checkIfBlank(e) }} src={props.imgUrl} alt="" />
+                            <img id="bookImage" onLoad={(e) => { checkIfBlank(e) }} src={props.imgUrl} alt={`The book cover of ${bookObject.title}.`} />
                             <div className="voteIcon">
                                 <p>{bookObject.vote}/5</p>
                             </div>
                             {winner ? <div className="winnerIcon">
-                                <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" />
+                                <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" alt={`Winner icon for the${bookObject.title} book.`}/>
                             </div> : null}
                         </div>}
 
@@ -144,12 +144,12 @@ const MainContent = function (props) {
 
                 <div className="mediaContainer">
                     <div className="imageContainer poster">
-                        <img className={movieObject.title} src={movieObject.path} alt={`The poster for ${movieObject.title}`} />
+                        <img className={movieObject.title} src={movieObject.path} alt={`The poster for ${movieObject.title}.`} />
                         <div className="voteIcon">
                             <p>{movieObject.vote}/5</p>
                         </div>
                         {!winner ? <div className="winnerIcon">
-                            <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" />
+                            <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" alt={`Winner icon for the ${movieObject.title} movie.`} />
                         </div> : null}
                     </div>
 

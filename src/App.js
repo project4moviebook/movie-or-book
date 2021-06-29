@@ -39,15 +39,6 @@ function App() {
   const [bookNotFound, setBookNotFound] = useState(false); const [failedSearch, setFailedSearch] = useState(false);
 
 
-
-
-  //for testing
-  const test = () => {
-    console.log(bookData);
-    console.log(movieData);
-    console.log(imgUrl);
-  }
-
   // Will be used in css for image not found
   // background-image: url("https://islandpress.org/sites/default/files/default_book_cover_2015.jpg");
 
@@ -129,7 +120,7 @@ function App() {
       }
     })
   }, [])
-  // test();
+  
 
 
 
@@ -138,16 +129,18 @@ function App() {
     <div className="App">
       <Header search={search} />
       {/* <button onClick={>click me!</button> */}
-      <main>
+      <main className="wrapper">
         {/* We pass the function used to scroll to main  */}
         {failedSearch ? null : <Instructions scrollButton={scrollSmoothHandler} />}
         {/* We pass the reference to the div we are trying to scroll too */}
         <div ref={scrollDiv} className="blankDiv"></div>
-        {failedSearch ? <div ref={scrollDiv} className="failed"><p>Search Failed. Please try again.</p><img src="https://www.vippng.com/png/detail/209-2093020_png-file-search-error-icon.png" /></div> : <MainContent search={userSearch} bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} defaultImage={defaultImage} bookNotFound={bookNotFound} />}
+        {failedSearch ? <div ref={scrollDiv} className="failed"><p>Search Failed. Please try again.</p><img src="https://www.vippng.com/png/detail/209-2093020_png-file-search-error-icon.png" alt="Search Failed. Please try again"/></div> : <MainContent search={userSearch} bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} defaultImage={defaultImage} bookNotFound={bookNotFound} />}
       </main>
       <SearchHistory />
       <footer>
-        <p>Made by <a className="juno" href=".com">Andrew</a> <a className="juno" href=".com">Adeel</a> and <a className="juno" href=".com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
+        <div className="wrapper">
+          <p>Made by <a className="juno" href="https://www.adeeldin.com/">Adeel</a>, <a className="juno" href="https://www.andreweichinger.com">Andrew</a>, and <a className="juno" href="https://www.shaunms.com/">Shaun</a> at <a className="juno" href="https://junocollege.com/">Juno College</a></p>
+        </div>
       </footer>
 
     </div>

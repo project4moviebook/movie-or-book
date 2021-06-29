@@ -14,12 +14,13 @@ function SearchHistory(props) {
         })
     }, [])
 
-
-    function showSearch() {
-        console.log('show search');
+    const closeHistory = () => {
+        document.querySelector('.searchHistoryContainer').classList.add('hidden')
     }
-
-
+    
+    const deleteDatabase = () => {
+        dbRef.set('')
+    }
 
     function populateList() {
         console.log("populate list ran");
@@ -45,14 +46,17 @@ function SearchHistory(props) {
 
 
     return (
-        <div className="searchHistoryContainer">
+        <div className="searchHistoryContainer hidden">
 
-
-
+            <span className="iconify" data-icon="noto:worm" data-inline="false"></span>
+            <button onClick={closeHistory} className="closeButton"><i className="fas fa-times-circle"></i></button>
+            <button onClick={deleteDatabase} className="clearHistory"><i className="fas fa-trash"></i></button>
+            
             <div onLoad={populateList()} className="searchItems">
+                
 
             </div>
-
+            
 
 
         </div>
