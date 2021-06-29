@@ -83,8 +83,13 @@ const MainContent = function (props) {
     //     console.log("this already exists");
     // }
 
+    
+    try {
+        firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+    } catch {
 
-    firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+    }
+
 
 
     // })
