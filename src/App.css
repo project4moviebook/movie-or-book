@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Maitree&family=Montserrat&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap');
 
 html {
   line-height: 1.15;
@@ -325,7 +325,7 @@ header {
 
 header h1 {
   font-size: 4rem;
-  font-family: 'Maitree', serif;
+  font-family: 'Libre Barcode 128 Text', cursive;
   background-color: #fff;
   padding: 10px 15px;
   border-radius: 5px;
