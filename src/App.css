@@ -358,25 +358,26 @@ input[type="text"] {
   width: 300px;
   padding: 15p2;
   border-radius: 5px;
-  border: 4px solid #008ac9; 
-    -webkit-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.2),
-            0 0 16px rgba(0,0,0,0.2); 
-    -moz-box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.2),
-            0 0 16px rgba(0,0,0,0.2); 
-    box-shadow: 
-      inset 0 0 8px  rgba(0,0,0,0.2),
-            0 0 16px rgba(0,0,0,0.2); 
-    background: rgba(255,255,255,1);
-    margin: 0 0 10px 0;
+  border: 4px solid #008ac9;
+  -webkit-box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1);
+  margin: 0 0 10px 0;
 }
 
 .instructionsInnerContainer {
   position: relative;
 }
 
-input[type="submit"], .instructionsButton2 {
+input[type="submit"],
+.instructionsButton2 {
   display: inline-block;
   border: none;
   padding: 10px 15px;
@@ -609,8 +610,8 @@ footer a {
   max-height: 500px;
   overflow-y: auto;
   padding: 10px;
-	-webkit-animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-bottom 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 /* ----------------------------------------------
@@ -628,29 +629,32 @@ footer a {
 @-webkit-keyframes scale-up-bottom {
   0% {
     -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    transform: scale(0.5);
     -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
   }
+
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
   }
 }
+
 @keyframes scale-up-bottom {
   0% {
     -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    transform: scale(0.5);
     -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
   }
+
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
   }
 }
 
@@ -699,7 +703,7 @@ footer a {
 
 }
 
-.closeButton i, 
+.closeButton i,
 .clearHistory i {
   font-size: 3rem;
   color: #261870;
@@ -737,13 +741,15 @@ footer a {
   header {
     height: auto;
   }
+
   .appHeader {
     display: flex;
     flex-direction: column;
     height: unset;
   }
 
-  input[type="submit"], .instructionsButton2 {
+  input[type="submit"],
+  .instructionsButton2 {
     margin-top: 0;
   }
 
@@ -840,7 +846,16 @@ footer a {
     width: 100%;
   }
 
-  .closeButton, .clearHistory{
+  .closeButton,
+  .clearHistory {
     right: -15px
+  }
+}
+
+@media(max-width: 330px) {
+
+  .instructionsContainer,
+  .hero {
+    height: 130vh;
   }
 }

@@ -83,9 +83,12 @@ const MainContent = function (props) {
     //     console.log("this already exists");
     // }
 
+    try {
 
-    firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+        firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+    } catch {
 
+    }
 
     // })
     // }, [])
@@ -120,7 +123,7 @@ const MainContent = function (props) {
                                 <p>{bookObject.vote}/5</p>
                             </div>
                             {winner ? <div className="winnerIcon">
-                                <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" alt={`Winner icon for the${bookObject.title} book.`}/>
+                                <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" alt={`Winner icon for the${bookObject.title} book.`} />
                             </div> : null}
                         </div>}
 
