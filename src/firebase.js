@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import 'firebase/database';
 
+//Firebase code
+
 var firebaseConfig = {
     apiKey: "AIzaSyDrtnusG6N7kSMnIJed7RS4IBBJaIBLvF0",
     authDomain: "project4-junoco.firebaseapp.com",
