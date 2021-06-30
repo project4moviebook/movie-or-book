@@ -3,7 +3,7 @@
 
 const Header = function (props) {
 
-    const displayHistory = () => {
+    const displayHistory = () => { //Used to show the history popup
         document.querySelector('.searchHistoryContainer').classList.remove('hidden')
     }
 

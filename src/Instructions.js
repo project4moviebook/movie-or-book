@@ -1,4 +1,5 @@
 const Instructions = function (props) {
+    // Instruction stuff
     return (
         <div className="instructionsContainer">
             <div className="hero"></div>

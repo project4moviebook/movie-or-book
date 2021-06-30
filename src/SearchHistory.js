@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function SearchHistory(props) {
     const [searchList, setSearchList] = useState([]);
 
-
+    // Get Firebase Info
     const dbRef = firebase.database().ref();
     useEffect(() => {
         dbRef.on('value', (response) => {
@@ -15,32 +15,25 @@ function SearchHistory(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const closeHistory = () => {
+    const closeHistory = () => { //Used to hide the search history container
         document.querySelector('.searchHistoryContainer').classList.add('hidden')
     }
     
-    const deleteDatabase = () => {
+    const deleteDatabase = () => { // If user clicks trash, empty FireBase
         dbRef.set('')
     }
 
-    function populateList() {
+    function populateList() { // Used to populate search History
 
-        // let count = 0;
-        // console.log(searchList[0]);
         searchList.forEach((value, index) => {
-            document.querySelector('.searchItems').innerHTML = "";
-            // if (searchList.length > 6) {
-            //     console.log('more then 6 items');
-            // }
+            document.querySelector('.searchItems').innerHTML = ""; //Clears the search Div
 
             for (let search in value) {
-                if (!(search === 'undefined')) {
+                if (!(search === 'undefined')) { //If item in Firebase contains a key, Undefined, skip the item
                     document.querySelector('.searchItems').innerHTML += `<button class="searchButton"> ${value[search]} </button>`
                 }
             }
         })
-        // setTimeout(() => { document.querySelector('.searchItems').innerHTML += searchList[0].book1 }, 5000)
-
     }
 
 
@@ -50,13 +43,7 @@ function SearchHistory(props) {
             <span className="iconify" data-icon="noto:worm" data-inline="false"></span>
             <button onClick={closeHistory} className="closeButton"><i className="fas fa-times-circle"></i></button>
             <button onClick={deleteDatabase} className="clearHistory"><i className="fas fa-trash"></i></button>
-            
-            <div onLoad={populateList()} className="searchItems">
-                
-
-            </div>
-            
-
+            <div onLoad={populateList()} className="searchItems"></div>
 
         </div>
     )

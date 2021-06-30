@@ -1,23 +1,19 @@
 import firebase from "./firebase";
-// import { useEffect, useState } from "react";
 
 const MainContent = function (props) {
-    // const dbRef = firebase.database().ref();
-    // const [filteredList, setFilteredList] = useState([]);
+    // Initialized object for information
     let movieObject = {};
     let bookObject = {};
     let castObject = {};
 
-    try {
+    try { // Setting information
         movieObject = {
             path: `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${props.movieInfo.results[0].poster_path}`,
             description: props.movieInfo.results[0].overview,
-            title: props.movieInfo.results[0].original_title,
+            title: props.movieInfo.results[0].title,
             vote: (props.movieInfo.results[0].vote_average / 2).toFixed(2),
             release_date: props.movieInfo.results[0].release_date,
-
         }
-
 
         bookObject = {
             description: props.bookInfo.volumeInfo.description,
@@ -37,7 +33,7 @@ const MainContent = function (props) {
     } catch {
     }
 
-    function editText() {
+    function editText() { //Used to display the search info due to API return containing HTML elements. Function runs on load
         try {
             const desc = document.querySelector("#bookText");
             desc.innerHTML = bookObject.description;
@@ -46,63 +42,27 @@ const MainContent = function (props) {
         }
     }
 
-    function checkIfBlank(para) {
+    function checkIfBlank(para) { //Checking if OpenLibrary returned an image that is their default blank and if true, setting to the original image from the Google Books API
 
         if (para.target.width === 250 && para.target.height === 350) {
             document.querySelector("#bookImage").src = bookObject.default
         }
-        // console.log(para)
-        // console.log(para.target.width)
+
     }
 
-    let winner;
+    let winner; //Create empty bool
 
-    if (bookObject.vote > movieObject.vote) {
+    if (bookObject.vote > movieObject.vote) { //Setting bool to true or false, depending on results
         winner = true;
     } else {
         winner = false;
     }
 
-
-    // useEffect(() => {
-    // dbRef.on('value', (response) => {
-    // const dataArray = [];
-    // const filteredArray = [];
-
-    // dataArray.push(response.val());
-    // dataArray.forEach((value, index) => {
-    //     // document.querySelector('.searchItems').innerHTML = "";
-
-    //     for (let search in value) {
-    //         filteredArray.push(search);
-    //         // document.querySelector('.searchItems').innerHTML += `<button class="searchButton"> ${value[search]} </button
-    //     }
-    // })
-    // setFilteredList(filteredArray);
-    // if (filteredArray.includes(<img className={movieObject.title} src={movieObject.path} alt={`The poster for ${movieObject.title}`} />)) {
-    //     console.log("this already exists");
-    // }
-
-    try {
-
+    try { // Attempt to upload to FireBase, if fails, the title contains an invalid character that Firebase doesn't accept
         firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
     } catch {
 
     }
-
-    // })
-    // }, [])
-
-
-
-
-
-
-
-
-
-    // const movieInfo = props.movieInfo;
-    // console.log(props.movieInfo.results[0].adult);
 
     return (
         // this is the div we are trying to scroll too 
@@ -165,12 +125,6 @@ const MainContent = function (props) {
 
 
             </div>
-
-
-
-
-            {/* <div className="three"><p className="test">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ex, earum sapiente reiciendis consequatur veritatis, natus nostrum totam consequuntur neque accusantium labore sint delectus deserunt.</p>
-            </div> */}
 
         </section>
     )
