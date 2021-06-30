@@ -658,6 +658,19 @@ footer a {
   }
 }
 
+.failedSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  min-height: 100vh;
+}
+
+.failedSearch img {
+  width: 50%;
+  height: auto;
+}
+
 .iconify {
   font-size: 6rem;
   position: absolute;
@@ -857,5 +870,12 @@ footer a {
   .instructionsContainer,
   .hero {
     height: 130vh;
+  }
+}
+
+@media(max-width: 290px) {
+
+  input[type="text"] {
+    width: 260px;
   }
 }

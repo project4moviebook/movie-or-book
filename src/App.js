@@ -26,7 +26,7 @@ function App() {
   const [imgUrl, setImgUrl] = useState('');
   const [castData, setCastData] = useState([]);
   const [defaultImage, setDefaultImage] = useState("");
-  const [bookNotFound, setBookNotFound] = useState(false); 
+  const [bookNotFound, setBookNotFound] = useState(false);
   const [failedSearch, setFailedSearch] = useState(false);
 
   //use effect to get api data
@@ -40,7 +40,7 @@ function App() {
         // Second API used to get more specific information
         fetch(`https://api.themoviedb.org/3/movie/${jsonData.results[0].id}/credits?api_key=3951aaaa350c1d4bbe3275a095820e70`).then((data) => {
           return data.json()
-        }).then((jsonCastData) => { 
+        }).then((jsonCastData) => {
           setCastData(jsonCastData); //Cast data to be used
         })
 
@@ -55,13 +55,13 @@ function App() {
 
             try { //Try to set image URL
               setImgUrl(`https://covers.openlibrary.org/b/ISBN/${result.items[0].volumeInfo.industryIdentifiers[0].identifier}-L.jpg`);
-              
+
             } catch {
             }
 
             try { //Try to set default image
               setDefaultImage(result.items[0].volumeInfo.imageLinks.thumbnail)
-              
+
             } catch { //If fails, assume book not found, and set to true
               setBookNotFound(true);
             }
@@ -83,7 +83,7 @@ function App() {
 
   // Use Effect used to add event listeners
   useEffect(() => {
-    window.addEventListener('click', (e) => { 
+    window.addEventListener('click', (e) => {
       // Adding click event listener
       if (e.target.parentNode.className === 'searchButton') { // If user clicks on an image with the class name "searchButton"
         setUserSearch(e.target.className);
@@ -92,18 +92,18 @@ function App() {
       }
     })
   }, [])
-  
+
 
   // Used to display everything on the screen
   return (
     <div className="App">
-      <Header search={search} />
+      <Header search={search} scrollButton={scrollSmoothHandler} />
       <main className="wrapper">
         {/* We pass the function used to scroll to main  */}
         {failedSearch ? null : <Instructions scrollButton={scrollSmoothHandler} />}
         {/* We pass the reference to the div we are trying to scroll too */}
         <div ref={scrollDiv} className="blankDiv"></div>
-        {failedSearch ? <div><p>Search Failed. Please try again.</p><img src="https://www.vippng.com/png/detail/209-2093020_png-file-search-error-icon.png" alt="Search Failed. Please try again"/></div> : <MainContent search={userSearch} bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} defaultImage={defaultImage} bookNotFound={bookNotFound} />}
+        {failedSearch ? <div className="failedSearch"><p>Search Failed. Please try again.</p><img src="https://www.vippng.com/png/detail/209-2093020_png-file-search-error-icon.png" alt="Search Failed. Please try again" /></div> : <MainContent search={userSearch} bookInfo={bookData} movieInfo={movieData} imgUrl={imgUrl} scrollTo={scrollDiv} castData={castData} defaultImage={defaultImage} bookNotFound={bookNotFound} />}
       </main>
       <SearchHistory />
       <Footer />

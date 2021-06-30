@@ -80,7 +80,7 @@ const MainContent = function (props) {
                         </div> : <div className="imageContainer poster">
                             <img id="bookImage" onLoad={(e) => { checkIfBlank(e) }} src={props.imgUrl} alt={`The book cover of ${bookObject.title}.`} />
                             <div className="voteIcon">
-                                <p>{bookObject.vote}/5</p>
+                                <p>{(typeof bookObject.vote) !== 'undefined' ? bookObject.vote : '0'}/5</p>
                             </div>
                             {winner ? <div className="winnerIcon">
                                 <img src="https://www.pngkit.com/png/full/0-3147_award-winning-png-transparent-image-bs-group.png" alt={`Winner icon for the${bookObject.title} book.`} />
