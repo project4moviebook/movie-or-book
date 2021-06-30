@@ -1,6 +1,7 @@
 import firebase from "./firebase";
 
 const MainContent = function (props) {
+
     // Initialized object for information
     let movieObject = {};
     let bookObject = {};
@@ -21,13 +22,13 @@ const MainContent = function (props) {
             vote: props.bookInfo.volumeInfo.averageRating,
             publish_date: props.bookInfo.volumeInfo.publishedDate,
             title: props.bookInfo.volumeInfo.title,
-            default: props.defaultImage
+            default: props.defaultImage,
         }
 
         castObject = {
             cast1: props.castData.cast[0].name,
             cast2: props.castData.cast[1].name,
-            cast3: props.castData.cast[2].name
+            cast3: props.castData.cast[2].name,
         }
 
     } catch {
@@ -60,6 +61,7 @@ const MainContent = function (props) {
 
     try { // Attempt to upload to FireBase, if fails, the title contains an invalid character that Firebase doesn't accept
         firebase.database().ref().child(`${movieObject.title}`).set(`<img class="${movieObject.title}" src=${movieObject.path} alt="The poster for ${movieObject.title}" />`);
+
     } catch {
 
     }
@@ -77,6 +79,8 @@ const MainContent = function (props) {
                     {props.bookNotFound ?
                         <div className="noBook">
                             <p>Book Not Found. Please try another search.</p>
+                        </div> : Object.keys(bookObject).length === 0 ? <div className="noBook">
+                            <p>Book Not Found. Please try another search.</p>
                         </div> : <div className="imageContainer poster">
                             <img id="bookImage" onLoad={(e) => { checkIfBlank(e) }} src={props.imgUrl} alt={`The book cover of ${bookObject.title}.`} />
                             <div className="voteIcon">
@@ -87,12 +91,15 @@ const MainContent = function (props) {
                             </div> : null}
                         </div>}
 
-                    {props.bookNotFound ? "" : <div className="description">
-                        <h2 className="header">{bookObject.title}</h2>
-                        <p id="bookText" onLoad={editText()}>{bookObject.description}</p>
-                        <p>Author: {bookObject.author}</p>
-                        <p>{bookObject.publish_date}</p>
-                    </div>}
+                    {props.bookNotFound ?
+                        <div className="noBook">
+                            <p>Book Not Found. Please try another search.</p>
+                        </div> : Object.keys(bookObject).length === 0 ? '' : <div className="description">
+                            <h2 className="header">{bookObject.title}</h2>
+                            <p id="bookText" onLoad={editText()}>{bookObject.description}</p>
+                            <p>Author: {bookObject.author}</p>
+                            <p>{bookObject.publish_date}</p>
+                        </div>}
 
 
                 </div>

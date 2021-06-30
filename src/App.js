@@ -29,8 +29,13 @@ function App() {
   const [bookNotFound, setBookNotFound] = useState(false);
   const [failedSearch, setFailedSearch] = useState(false);
 
+
+
+
+
   //use effect to get api data
   useEffect(() => {
+
     // First API used to get data from the movie database using the user's search
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=3951aaaa350c1d4bbe3275a095820e70&language=en-US&page=1&include_adult=false&query=${userSearch}`).then((data) => {
       return data.json()
@@ -51,30 +56,29 @@ function App() {
           .then(response => response.json())
           .then(result => {
 
-            setBookData(result.items[0]); //Book data to be used
+            //Return to default
+            setBookNotFound(false);
+            setFailedSearch(false);
 
             try { //Try to set image URL
               setImgUrl(`https://covers.openlibrary.org/b/ISBN/${result.items[0].volumeInfo.industryIdentifiers[0].identifier}-L.jpg`);
-
             } catch {
             }
 
             try { //Try to set default image
-              setDefaultImage(result.items[0].volumeInfo.imageLinks.thumbnail)
-
+              setDefaultImage(result.items[0].volumeInfo.imageLinks.thumbnail);
             } catch { //If fails, assume book not found, and set to true
               setBookNotFound(true);
             }
 
+            setBookData(result.items[0]);
+
           })
 
-        //Return to default
-        setBookNotFound(false)
-        setFailedSearch(false)
-
       } catch { //If first API fails, assume search to be invalid
-        setFailedSearch(true)
+        setFailedSearch(true);
       }
+
 
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
